@@ -1,27 +1,305 @@
-\section{Einteilung \& Design}
+\section{Planung}
 \setauthor{David Altenhofer}
 Sobald die Festlegung und die Aufteilung der Arbeitspakete in der Firma geregelt waren, wurde mit dem Use-Case-Diagramm begonnen.
 Es haben sich alle Teamkollegen der Diplomarbeit daran beteiligt und nach einigen Änderungen, Diskussionen und Empfehlungen 
 war das Use-Case-Diagramm nach zwei Tagen finalisiert.
 \\
-\\
-\\
+\subsection*{Was ist ein Use-Case-Diagramm?}
+Ein Use-Case-Diagramm ist eine von vielen Arten der Unified Modeling
+Language (UML). Es wird verwendet um die funktionalen Anforderungen eines 
+Systems beziehungsweise einer Anwendung zu visualisieren. Das Diagramm funktioniert 
+so, dass ein Benutzer mit einem System interagiert, indem es Anwendungsfälle 
+(Use Cases) und Akteure (Benutzer) zeigt, die den Anwendungsfall durchlaufen.
+Solche Diagramme sind besonders nützlich, für das Verständnis der Funktionalität im 
+Projekt ohne dabei viel technisches Fachwissen vorauszusetzen.\cite{APCW20018}
 
 \begin{figure}[ht!]
     \centering
     \includegraphics[scale=0.3]{pics/UCD.png}
-    \caption{\label{fig:The-caption}Use-Case-Diagramm \cite{APCW2006}}
+    \caption{\label{fig:The-caption}Use-Case-Diagramm des Projekts}
     \label{fig:impl:use-case-diagramm}
   \end{figure}
 \newpage
 
-  Ein Use-Case-Diagarmm oder Anwendungsfalldiagramm, visualisiert die von außen sichtbare 
-  Interaktion von Akteuren mit dem zu entwickelnden System. Es besteht aus dem System,
-  zugehörigen Anwendungsfällen und Akteuren und setzt diese miteinander in Beziehung.
-  \\
-  \\
-  System: Was wird beschrieben?
-  \\
-  Akteur: Wer bentutz das System?
-  \\
-  Use Case: Was machen die Akteure?
+\subsection{Scrum}
+Für den Entwicklungsprozess wurde Scrum als agiles Vorgehensmodell im Projekt angewandt.
+Scrum ist eine Methode für agiles Projektmanagement. Es wird 
+oft von Softwareentwickler-Teams aber auch von Nichtsoftwareentwicklern
+für die Zusammenarbeit im Team gewählt. Scrum basiert auf
+Schlüsselkonzepten, die Struktur und einen klar definierten Arbeitsprozess basierend auf agilen Prinzipien geben.
+\\
+
+\subsection*{Scrum Team}
+Ein Scrm Team besteht aus mehreren Rollen, darunter der Product Owner,
+der Scrum Master und die Entwickler. Für jeder dieser Rollen ist ein 
+bestimmter Verantwortungsteil im Projekts zugewiesen.
+
+\subsection*{Sprints}
+Der Zeitraum in dem das Team sich auf die Umsetzung der ausgemachten
+Aufgaben konzentriert. Ein Sprint dauert normalerweise 2-4 Wochen.
+Da Scrum ein iterativer, inkrementeller Prozess ist, gibt es während 
+dem Projekt meistens mehrere Sprints mit Arbeitspaketen, die aufeinander aufbauen. 
+
+\subsection*{Sprint Planning}
+Bevor ein neuer Sprint beginnt, wird ein Sprint Planning durchgeführt.
+Es werden Aufgaben aus dem Product Backlog ausgewählt, die im Zuge 
+des neuenn Sprints zu erledigen sind.
+
+\subsection*{Sprint Review}
+Die Sitzung in der das Team die Ergebnisse des Sprints präsentiert und 
+ein Feedback erhält.
+
+\subsection*{Product Backlog}
+Das Backlog ist eine Prioritätsliste von Aufgaben bzw. Funktionen,
+die eine Anforderung im Projekt darstellen und noch umgesetzt werden müssen.
+
+
+\subsection*{In diesem Projekt}
+Mit unserem Projekt, ist das in der Firma genauso abgelaufen. 
+Es wurde zuerst gemeinsam mit den Firmenkollegen, Product Backlog festgelegt und dann nach jedem
+Sprint in einem Sprint Planning Meeting neue Aufgaben ausgewählt für den nächsten Sprint. 
+\cite{APCW20019}
+
+\newpage
+\section{Coding}
+\setauthor{David Altenhofer}
+\subsection{Einstieg in React}
+Die Kollegen in der Firma haben uns das Framework aussuchen lassen, meinten aber dass ihnen das Javascript-Framework React am Liebsten wäre, da
+es ein Standard in dieser Abteilung des Unternehmens war. Keiner aus unserem Team hatte sich bisher mit React beschäftigt, nichtsdestotrotz
+haben wir uns für React entschieden, denn es ist immer interessant etwas Neues außerhalb der Schule kennenzulernen und sich neue Dinge
+selbst beizubringen. Wir haben uns also erstmal mit dem Framework vertraut gemacht, bevor wir mit dem Projekt losstarten konnten.
+\\
+\\
+\subsection{Prototyping}
+\setauthor{David Altenhofer}
+Der erste Schritt beim Coding, war das Grundgerüst des Designs, begonnen mit einer Navigationsleiste. Das Ganze wurde 
+mit simplem HTML \& CSS umgesetzt. siehe \ref{HTML}
+
+
+\subsection*{Tailwind-CSS}
+\setauthor{David Altenhofer}
+Das CSS-Framework Tailwind CSS hat sich als Unterstützung beim Design angeboten, weil es bereits viele vordefinierte CSS-Klassen
+integriert hat und die Geschwindigkeit und Effizienz stark verbessert hat. Mehr über das Framework in Abschnitt \ref{TailwindCSS}
+\newpage
+\subsection{Routing}
+Nach dem Prototyping wurde das Routing für die Website entwickelt.
+\\
+React benötigt für ein Routing eine externe Library. Diese kann man ganz einfach installieren mit: 
+\begin{figure}[ht!]
+  \centering
+  \includegraphics[scale=1]{pics/react-router.PNG}
+  \caption{\label{fig:The-caption}React Router installieren }
+  \label{fig:impl:use-case-diagramm}
+\end{figure}
+\\
+Als nächstes wird der React Router aufgesetzt. Das ganze findet in dem File App.js statt, was als Basis des Projekts dient.
+
+
+\begin{lstlisting}[caption=Routen in React]
+  function App() {
+    return (
+      <BrowserRouter>
+        <Routes>
+          <Route path="/installables" element={<Installables/>}/>
+          <Route path="*" element={<PageNotFound/>}/>
+        </Routes>
+      </BrowserRouter>
+    );
+}
+\end{lstlisting}
+
+
+Im obigen Code wird \textbf{Routes} und \textbf{Route} von der react-router-dom Library importiert und dann verwendet, um 
+die gewünschte Navigation zu implementieren. Alle \textbf{Routen} liegen verschachtelt in den \textbf{Routes}.
+Diese haben zwei Hauptparameter:
+\begin{itemize}
+  \item {\textbf{Path} legt fest, wie der Name schon sagt, auf welchen Pfad der User weitergeleitet werden soll.}
+  \item {\textbf{Element} bestimmt, welche Komponente beim Aufruf des Pfades geladen werden soll. Wenn dieser Parameter 
+  nicht ausgefüllt ist, wird ein Fehler auftreten.}
+\end{itemize}
+\newpage
+Bis jetzt funktioniert das Routing aber nur durch direkter Änderung der URL. Um die verfügbaren Routen auch mit einem Link 
+aufrufen zu können muss \textbf{Link} aus der react-router-dom Library importiert werden. 
+Da die Navigationsleiste schon implementiert wurde, kann das Routing per Link gleich in der Navbar-Komponente angelegt werden.
+
+\begin{lstlisting}[caption=Beispiel für Navigation in React]
+  const SideBar = () => {
+    return (
+        <div className="nav-container">
+            <Link to="/">
+                <img className="doka-logo" src={DokaLogo} alt="Doka" />
+            </Link>
+            <Link className="nav-link" to="/installablePackages">
+                <SideBarIcon />
+            </Link>
+            <Link className="nav-link" to="/import">
+                <SideBarIcon />
+            </Link>
+        </div>
+    );
+}
+\end{lstlisting}
+
+Das \textbf{to} Attribut legt fest wohin navigiert wird, vorrausgesetzt die Route existiert. siehe Listing 13.
+Verschachtelt in den \textbf{Link-Tags} werden Bilder, Icons oder Komponenten eingebettet um ein visuelles Objekt für den User 
+zum Klicken anzuzeigen.
+\\
+\\
+Man kann den User natürlich auch programmatisch, nach einem Klick auf einen Button zum Beispiel, auf bestimmte Routen weiterleiten 
+mit \textbf{navigate()}.
+
+\begin{lstlisting}[caption=Alternative Navigation]
+  <button className="btn" onClick={() => navigate('import')}></button>
+\end{lstlisting}
+\cite{APCW20020}
+
+\clearpage
+
+\subsection{Authentifizierung}
+\setauthor{David Altenhofer}
+Beim Aufruf der Seite wird als Erstes geschaut ob der User schon angemeldet beziehungswiese authentifiziert ist.
+Dabei wird geschaut ob der LocalStorage, eine gültige Authentifizierung beinhaltet.
+Wenn das der Fall ist, dann wird er zur Startseite weitergeleitet. 
+
+Wenn der User aber noch nicht authentifiziert ist, dann kann er sich mit einem 
+Login-Button anmelden. Er wird zu einem Login auf \textbf{``https://login.test.doka.com/''} weitergleitet.
+Dort kann er sich mit einem gültigen Doka-Konto anmelden.
+\\
+\begin{figure}[ht!]
+  \centering
+  \includegraphics[scale=.5]{pics/doka-login.PNG}
+  \caption{\label{fig:The-caption}Doka Login }
+  \label{fig:impl:use-case-diagramm}
+\end{figure}
+\newpage
+
+\subsection*{Das größte Problem dabei}
+Das zeitintensivste Problem des ganzen Projektes (zumindest was meinen Teil angeht) war die Authentifizierung hinzubekommen. Grund 
+dafür war die völlig neue Technologie von Bearer Tokens und API-Authentifizierung bishin zu den Libraries mit AuthProvidern in React.
+Das Grundgerüst für das Ganze war nach eigner Recherche und Besprechung mit den Betreuern relativ schnell implementiert. Anfangs war es 
+jedoch so, dass nach der Anmeldung nicht weitergeleitet wurde zu der React-Page, sondern nur eine leere weiße Seite im Browser 
+zu sehen war. Die Url hat sich natürlich nicht auf ``http://localhost:3000/'' geändert wie sie sollte, sondern blieb bei der langen Url mit 
+den ganzen Parametern wie client-id, scope, sesssion-state usw. 
+
+\subsection*{Die Lösung}
+Ich habe lange gebraucht um das Probem zu lösen. Es stellte sich heraus, dass ein simpler Timeout von ungefähr 600 millisekunden 
+ausreichen, dass der redirect funktionert. Der Grund dafür ist, dass der Authentifizierungensprozess aufgrund von 
+\textbf{asynchroner Verarbeitung} einige Zeit benötigt. Wenn ein direkter Redirect ohne Verzögerung durchgeführt wird, kann es passieren, 
+dass der Prozess noch nicht vollständig abgeschlossen ist. Das Hinzufügen eines Timeouts ermöglicht es also den 
+Authentifizierungsprozess in dieser Zeitspanne abzuschließen, bevor der Redirect ausgelöst wird.
+
+\begin{lstlisting}[caption=Timeout setzen]
+  if (window.location.href.includes('code')) {
+            setTimeout(() => {
+                window.location.href = window.location.origin;
+            }, 600);
+        }
+\end{lstlisting}
+\newpage
+\subsection*{Wie funktionert die die Authentifizierung mit Token im Detail?}
+\begin{enumerate}
+\item Zuerst muss sich beim Identitätsanbieter authentifiziert werden. Das ganze passiert
+beim einfachen Anmelden mit einem gültigen Doka-Benutzer. Der Identitätsanbieter stellt dann einen Autorisierungscode aus.\\
+\item Nach dem erfolgreichen Anmelden wird der Benutzer zu der angegeben redirect-uri (In dem Fall ``http://localhost:3000'') weitergeleitet.
+Die URL enthält einen Autorisierungscode als Parameter. Dieser wird zusammen mit der client-id dafür verwendet, eine Anfrage an den
+Identitätsanbieter zu stellen, um einen Zugriffstoken zu erhalten. Dieser Schritt ist jedoch unsichtbar und wird automatisch von der 
+Library erledigt. In dem Fall ist das die Library ``react-oidc-context''.\\
+\item Nachdem die App den Zugriffstoken erhalten hat, wird speichere ich diesen im Localstorage. Das erlaubt es,
+auch nach dem Schließen des Browsers zum Beispiel, immer noch angemeldet zu bleiben.\\
+\item Wenn nun eine Anfrage an die geschützte API gesendet wird, fügt man den Bearer Token im
+Authorization-Header der Anfrage zurück, und der Zugriff ist gesichert.
+\begin{lstlisting}[caption=Authorization-Header]
+  let httpOptions = {
+    method: 'GET',
+    headers: {
+        Authorization: localStorage.getItem('access_token')
+    }
+};
+\end{lstlisting}
+
+\end{enumerate}
+\newpage
+
+\subsection*{Wie sieht das ganze im Code aus?}
+Im index.js File findet die Konfiguration der Authentifizierung statt. Wichtig dabei sind die Login-URL, die client-id, die 
+Art des Tokens der zurückgeliefert werden soll und der redirect, also wohin man weitergeleitet wird bei erfolgreicher Anmeldung.
+Die App-Komponente mit dem ganzen Inhalt der Website, wird in die AuthProvider-Komponente verschachtelt, in der sich die 
+Authentifizierungslogik befindet. 
+
+\begin{lstlisting}[caption=index.js File mit Auth-Parametern]
+  import { Auth0Provider } from "react-oidc-context"
+
+const oidcConfig = {
+    authority: "https://login.test.doka.com/",
+    client_id: "9d71a618-5337-4bff-b8b0-3e236e73e5ea",
+    token_type: "Bearer",
+    redirect_uri: "http://localhost:3000",
+    scope: "openid offline_access profile phone email dfdsin.doka.com/download",
+    post_logout_redirect_uri: "http://localhost:3000/login"
+}
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+    <AuthProvider{...oidcConfig}>
+    <App />
+    </AuthProvider>
+);
+\end{lstlisting}
+
+In App.js kann dann der aktuelle Status der Authentifizierungen (isLoading, isAuthenticated,...) abgerufen werden und 
+auf Authentifizierungensmethoden wie \textbf{logout} zugegriffen werden. Das ganze funktioniert mit der useAuth-Hook. Das ist 
+dann quasi ein Array aus verschieden Variablen, auf das man über mehrere Komponenten Zugriff hat. Sobald die Anmeldung am Doka-Portal 
+geglückt ist, wird man zur Startseite der Website weitergeleitet und der Bearer-Token wird im LocalStorage gespeichert. 
+
+\begin{lstlisting}[caption=App.js File - Verwalten des Auth-Status]
+  import {useAuth, AuthProvider} from "react-oidc-context"
+
+  function App() {
+
+    const [access_token, setAccess_token] = useState(null);
+    const [isAuth, setIsAuth] = useState(false);
+
+    const auth = useAuth();
+
+        if (auth.isLoading) {
+            return <div className="box loadingBox"><CircularProgress className="loading"/></div>;
+        }
+
+        if (auth.isAuthenticated) {
+            const token = 'Bearer ' + auth.user.access_token;
+            setAccess_token(token);
+            localStorage.setItem('access_token', token);
+
+            return (
+                <SideBar />
+            )
+        } else {
+            if (window.location.href !== `${window.location.origin}/login`) {
+                return window.location.replace(`${window.location.origin}/login`);
+            }
+        }
+\end{lstlisting}
+
+\section{Retrospektive und Bugfixing}
+\setauthor{David Altenhofer}
+Da ich bereits 3 Tage vor Ende des Praktikums, mit meinem Teil in React fertig war,
+bestand meine Aufgabe darin, den Code nach Fehlfunktionen zu überprüfen und noch einige 
+kleine Designänderungen auf Wunsch der Firmenkollegen durchzuführen. Ich habe mich mit 
+ihnen über die Zufriedenheit von dem Projekt und unserer Arbeit während des Praktikums 
+verständigt und eine Retrospektive über alle Sprints des Projekts durchgeführt. 
+
+In der übrig gebliebenen Zeit, habe ich meinem Diplomarbeitspartner David Precup mit dem neuen Framework geholfen, der 
+aufgrund eines längeren Krankenstandes, ziemilch weit hinten war mit seinem Teil im Projekt. 
+  
+ 
+
+
+
+
+
+
+
+
+
+
+
